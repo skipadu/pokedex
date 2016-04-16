@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
   
   @IBOutlet weak var collection: UICollectionView!
   
   var pokemon = [Pokemon]()
+  var musicPlayer: AVAudioPlayer!
   
   let pokemonCount: Int = 718
   
@@ -21,7 +23,22 @@ class ViewController: UIViewController {
     collection.delegate = self
     collection.dataSource = self
     
+    initAudio()
     parsePokemonCSV()
+  }
+  
+  func initAudio() {
+    let path = NSBundle.mainBundle().pathForResource("music", ofType: "mp3")!
+    
+    do {
+      musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path)!)
+      musicPlayer.prepareToPlay()
+      musicPlayer.numberOfLoops = -1
+      musicPlayer.play()
+    } catch let err as NSError {
+      print(err.debugDescription)
+    }
+    
   }
   
   func parsePokemonCSV() {
@@ -43,6 +60,16 @@ class ViewController: UIViewController {
       print(err.debugDescription)
     }
     
+  }
+  
+  @IBAction func musicButtonPressed(sender: UIButton) {
+    if musicPlayer.playing {
+      musicPlayer.stop()
+      sender.alpha = 0.5
+    } else {
+      musicPlayer.play()
+      sender.alpha = 1.0
+    }
   }
   
 }
