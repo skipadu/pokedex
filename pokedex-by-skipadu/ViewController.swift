@@ -74,6 +74,16 @@ class ViewController: UIViewController {
       sender.alpha = 1.0
     }
   }
+ 
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "PokemonDetailVC" {
+      if let detailsVC = segue.destinationViewController as? PokemonDetailVC {
+        if let poke = sender as? Pokemon {
+          detailsVC.pokemon = poke
+        }
+      }
+    }
+  }
   
 }
 
@@ -81,6 +91,15 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate {
   
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+    let poke: Pokemon!
+    if isInSearchMode {
+      poke = filteredPokemon[indexPath.row]
+    } else {
+      poke = pokemon[indexPath.row]
+    }
+
+    performSegueWithIdentifier("PokemonDetailVC", sender: poke)
   }
   
 }
@@ -148,5 +167,5 @@ extension ViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     view.endEditing(true)
   }
-
+  
 }
