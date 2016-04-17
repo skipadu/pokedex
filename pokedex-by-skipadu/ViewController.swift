@@ -12,16 +12,19 @@ import AVFoundation
 class ViewController: UIViewController {
   
   @IBOutlet weak var collection: UICollectionView!
+  @IBOutlet weak var searchbar: UISearchBar!
   
   var pokemon = [Pokemon]()
   var musicPlayer: AVAudioPlayer!
-  
-  let pokemonCount: Int = 718
+  var isInSearchMode = false
+  var filteredPokemon = [Pokemon]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     collection.delegate = self
     collection.dataSource = self
+    searchbar.delegate = self
+    searchbar.returnKeyType = UIReturnKeyType.Done
     
     initAudio()
     parsePokemonCSV()
@@ -89,7 +92,13 @@ extension ViewController: UICollectionViewDataSource {
     
     if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
       
-      let poke = pokemon[indexPath.row]
+      let poke: Pokemon!
+      if isInSearchMode {
+        poke = filteredPokemon[indexPath.row]
+        
+      } else {
+        poke = pokemon[indexPath.row]
+      }
       cell.configureCell(poke)
       
       return cell
@@ -99,7 +108,10 @@ extension ViewController: UICollectionViewDataSource {
   }
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return pokemonCount
+    if isInSearchMode {
+      return filteredPokemon.count
+    }
+    return pokemon.count
   }
   
   func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -115,4 +127,26 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     return CGSizeMake(105, 105)
   }
   
+}
+
+// MARK: - UISearchBarDelegate
+extension ViewController: UISearchBarDelegate {
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchbar.isBlank() {
+      isInSearchMode = false
+      view.endEditing(true)
+      collection.reloadData()
+    } else {
+      isInSearchMode = true
+      let lower = searchbar.text!.lowercaseString
+      filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
+      collection.reloadData()
+    }
+  }
+  
+  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    view.endEditing(true)
+  }
+
 }
