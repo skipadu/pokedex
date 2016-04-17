@@ -58,7 +58,6 @@ class ViewController: UIViewController {
         pokemon.append(poke)
       }
       
-      print(rows)
     } catch let err as NSError {
       print(err.debugDescription)
     }
