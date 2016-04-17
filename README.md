@@ -16,3 +16,8 @@ Learning Swift
 * [AlamoFire - JSON](https://github.com/Alamofire/Alamofire)
 * [CSVParser](https://github.com/spentak/csvswift) by Mark Price
 * Trying to follow [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
+
+## What next? ##
+* Improve details view to look nicer
+* Translated to few other languages than just English
+* Refactor code to look better and more readable

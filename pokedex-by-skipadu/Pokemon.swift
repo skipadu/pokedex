@@ -75,6 +75,7 @@ class Pokemon {
     _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId)/"
   }
   
+  // TODO: Find out if there is some library that can "bind" JSON object straight to object?
   func downloadPokemonDetails(completed: DownloadComplete) {
     let url = NSURL(string: _pokemonUrl)!
     Alamofire.request(.GET, url).responseJSON { response in
