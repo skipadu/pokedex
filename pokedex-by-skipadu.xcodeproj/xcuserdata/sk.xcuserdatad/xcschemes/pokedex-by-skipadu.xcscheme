@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "535AE7821CC7D7CE009266A0"
+               BuildableName = "pokedex-by-skipaduUITests.xctest"
+               BlueprintName = "pokedex-by-skipaduUITests"
+               ReferencedContainer = "container:pokedex-by-skipadu.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
