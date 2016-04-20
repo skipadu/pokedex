@@ -1,7 +1,7 @@
 # pokedex
 
 ![Main](/screenshots/iPhone6-01-MainView_framed.png?raw=true "Main-screen")
-![Details](/screenshots/iPhone6-02-DetailsView_framed.png.png?raw=true "Details-screen")
+![Details](/screenshots/iPhone6-02-DetailsView_framed.png?raw=true "Details-screen")
 
 ## Copyright ##
 No copyright or trademark infringement is intened in using Pokémon content.
