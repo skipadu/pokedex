@@ -8,7 +8,7 @@
 
 import Foundation
 
-func returnEmptyIfNil(string: String?) -> String {
+func returnEmptyIfNil(_ string: String?) -> String {
   var result: String? = string
   if string == nil {
     result = ""

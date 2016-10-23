@@ -28,7 +28,7 @@ class PokemonDetailVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    nameLbl.text = pokemon.name.capitalizedString
+    nameLbl.text = pokemon.name.capitalized
     let img = UIImage(named: "\(pokemon.pokeDexId)")
     mainImg.image = img
     currentEvoImg.image = img
@@ -49,9 +49,9 @@ class PokemonDetailVC: UIViewController {
     
     if pokemon.nextEvolutionId == "" {
       evoLbl.text = "No evolutions"
-      nextEvoImg.hidden = true
+      nextEvoImg.isHidden = true
     } else {
-      nextEvoImg.hidden = false
+      nextEvoImg.isHidden = false
       nextEvoImg.image = UIImage(named: pokemon.nextEvolutionId)
       var str = "Next evolution: \(pokemon.nextEvolutionTxt)"
       
@@ -63,8 +63,8 @@ class PokemonDetailVC: UIViewController {
     
   }
   
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    dismiss(animated: true, completion: nil)
   }
   
 }
