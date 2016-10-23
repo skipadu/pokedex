@@ -29,7 +29,7 @@ class Pokemon {
   }
   
   var pokeDexId: Int {
-    return _pokedexId
+    return _pokedexId!
   }
   
   var description: String {
@@ -72,13 +72,12 @@ class Pokemon {
     self._name = name
     self._pokedexId = pokedexId
     
-    _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId)/"
+    _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId!)/"
   }
   
   // TODO: Find out if there is some library that can "bind" JSON object straight to object?
   func downloadPokemonDetails(_ completed: @escaping DownloadComplete) {
-    let url = URL(string: _pokemonUrl)!
-    Alamofire.request(url).responseJSON { response in
+    Alamofire.request(_pokemonUrl).responseJSON { response in
       let result = response.result
       
       if let dict = result.value as? Dictionary<String, AnyObject> {
