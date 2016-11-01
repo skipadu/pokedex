@@ -1,12 +1,7 @@
 # pokedex
 
-![Main](/screenshots/iPhone6-01-MainView_framed.png?raw=true "Main-screen")
-![Details](/screenshots/iPhone6-02-DetailsView_framed.png?raw=true "Details-screen")
-
-## Copyright ##
-No copyright or trademark infringement is intened in using Pokémon content.
-
-Nintendo/Creatures Inc./GAME FREAK Inc. TM and Pokémon character names are trademarks of Nintendo.
+![Main](/screenshots_git/iPhone6-01-MainView_framed.png?raw=true "Main-screen")
+![Details](/screenshots_git/iPhone6-02-DetailsView_framed.png?raw=true "Details-screen")
 
 ## Why? ##
 Learning Swift. This is made for learning purposes.
@@ -24,7 +19,16 @@ Learning Swift. This is made for learning purposes.
 
 
 ## What next? ##
+* Update screenshots
 * Improve details view to look nicer
+* Add "Moves" to details view
 * Translate to few other languages than just English
 * Refactor code to look better and more readable
-* Draw appicons
+* Draw appicon
+* Support for portrait and landscape mode
+
+
+## Copyright ##
+No copyright or trademark infringement is intened in using Pokémon content.
+
+Nintendo/Creatures Inc./GAME FREAK Inc. TM and Pokémon character © 2016 Pokémon. © 1995–2016 Nintendo/Creatures Inc./GAME FREAK inc. Pokémon and Pokémon character names are trademarks of Nintendo. Other trademarks are the property of their respective owners.
